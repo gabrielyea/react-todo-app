@@ -14,7 +14,7 @@
 
 ## Live Demo
 You can see my page live here: 
-[Check it out!](https://gabrielyea.github.io/to-do-list/)
+[Check it out!](https://gabrielyea.github.io/react-todo-app/)
 
 
 ## Getting Started
