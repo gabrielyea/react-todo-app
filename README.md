@@ -10,7 +10,7 @@
 - html
 - sass
 - javaScript
-- Webpack
+- React
 
 ## Live Demo
 You can see my page live here: 
@@ -45,10 +45,6 @@ To run the test just use the following command!
 👤 *Gabriel Rendon*
 
 - GitHub: [@gabrielyea](https://github.com/gabrielyea)
-
-👤 *Diego Solis*
-
-- GitHub: [@disc3110](https://github.com/disc3110)
 
 
 ## 🤝 Contributing
