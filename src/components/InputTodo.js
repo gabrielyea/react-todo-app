@@ -10,7 +10,6 @@ class InputTodo extends Component {
   };
 
   onChange = (e) => {
-    console.log('helo');
     this.setState({
       [e.target.name]: e.target.value,
     });
@@ -37,8 +36,9 @@ class InputTodo extends Component {
           value={this.state.title}
           name="title"
           onChange={this.onChange}
+          className="input-text"
         />
-        <button type="submit">Submit</button>
+        <button className="input-submit" type="submit">Submit</button>
       </form>
     );
   }
