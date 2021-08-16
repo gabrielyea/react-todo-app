@@ -1,7 +1,11 @@
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable object-shorthand */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import TodosList from './TodoList';
 import Header from './Header';
+import InputTodo from './InputTodo';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class TodoContainer extends React.Component {
@@ -10,29 +14,65 @@ class TodoContainer extends React.Component {
     this.state = {
       todos: [
         {
-          id: 1,
+          id: uuidv4(),
           title: 'Setup development environment',
           completed: true,
         },
         {
-          id: 2,
+          id: uuidv4(),
           title: 'Develop website and add content',
           completed: false,
         },
         {
-          id: 3,
+          id: uuidv4(),
           title: 'Deploy to live server',
           completed: false,
         },
       ],
     };
+    this.handleChange = this.handleChange.bind(this);
   }
+
+  addTodoItem = (title) => {
+    const newTodo = {
+      id: uuidv4(),
+      title: title,
+      completed: false,
+    };
+    this.setState({ todos: [...this.state.todos, newTodo] });
+  };
+
+  handleChange = (id) => {
+    this.setState((prevState) => ({
+      todos: prevState.todos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
+        }
+        return todo;
+      }),
+    }));
+  };
+
+  delTodo = (id) => {
+    this.setState({
+      // eslint-disable-next-line react/no-access-state-in-setstate
+      todos: [...this.state.todos.filter((todo) => todo.id !== id)],
+    });
+  };
 
   render() {
     return (
       <div>
         <Header />
-        <TodosList todos={this.state.todos} />
+        <InputTodo addTodoProps={this.addTodoItem} />
+        <TodosList
+          todos={this.state.todos}
+          handleChangeProps={this.handleChange}
+          handleDelete={this.delTodo}
+        />
       </div>
     );
   }
